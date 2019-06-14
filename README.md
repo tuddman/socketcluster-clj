@@ -2,6 +2,9 @@
 
 A [SocketCluster](https://socketcluster.io/) Client library for Clojure. This client wraps [socketcluster-client-java](https://github.com/sacOO7/socketcluster-client-java), but where appropriate aims to be more idiomatic and succinct.
 
+
+[![Clojars Project](https://img.shields.io/clojars/v/tuddman/socketcluster-clj.svg)](https://clojars.org/tuddman/socketcluster-clj)
+
 ## Usage
 
 ```clojure
