@@ -7,15 +7,36 @@ A [SocketCluster](https://socketcluster.io/) Client library for Clojure. This cl
 ```clojure
 lein repl
 
-=> (require '[socketcluster-clj.core :as sc])
+;; define
+=> (require '[socketcluster-clj.client :as sc-client])
+=> (require '[socketcluster-clj.listeners :as sc-listen])
+=> (require '[socketcluster-clj.events :as sc-event])
+=> (require '[socketcluster-clj.channels :as sc-ch])
 => (def sc-server-url "ws://localhost:8000/socketcluster/")
-=> (def my-socket (sc/new-socket sc-server-url)
-=> (sc/set-listener my-socket)
-=> (sc/connect my-socket)
-=> (sc/emit my-socket {"some" "data"})
+=> (def my-socket (sc-client/new-socket sc-server-url)  
+or
+=> (sc-client/set-url my-socket sc-server-url)
+
+;; set listener(s)
+=> (sc-listen/set-listener my-socket)
+
+;; connect
+=> (sc-client/connect my-socket)
+=> (sc-event/emit my-socket {"some" "data"})
+
+;; CHANNELS -
+
+;; subscribe
+
+=> (sc-ch/create-channel my-socket "channel-name")
+=> (sc-ch/set-channel-listener my-socket "channel-name" (fn [name data] (print "received on channel => " name "some data => " data)))
+=> (sc-ch/subscribe my-socket "channel-name")
+
+;; publish
+=> (sc-ch/publish my-socket "channel-name" {"some" "data"})
 ```
 
-have a look in `src/socketcluster_clj/core.clj` for every function you can call.
+for more, have a look in `src/socketcluster_clj/<ns>.clj` for every function you can call.
 
 
 ### NPE Issue
@@ -29,7 +50,7 @@ Exception in thread "OkHttp Dispatcher" java.lang.NullPointerException
 	at okhttp3.internal.ws.RealWebSocket$2.onResponse(RealWebSocket.java:206)
 ```
 
-you need to `(sc/set-listener <socket>)` **before** connecting.
+you need to `(sc-listen/set-listener <socket>)` **before** connecting.
 
 ## License
 

@@ -6,7 +6,6 @@
    :repositories [["bintray" {:url "https://dl.bintray.com/sacoo7/Maven"
                               :snapshots true}]]
   :dependencies [[org.clojure/clojure "1.10.0"]
-                 ; [io.github.sac/SocketclusterClientJava "2.0.1"] ;; local with latest okHttp client
-                 [io.github.sac/SocketclusterClientJava "2.0.0-beta"] ;; sacoo7 on bintray
-                 ]
-  :repl-options {:init-ns socketcluster-clj.core})
+                 [io.github.sac/SocketclusterClientJava "2.0.0-beta"] ;; sacoo7 on Github, bintray
+                 [com.taoensso/timbre "4.10.0"]]
+  :repl-options {:init-ns socketcluster-clj.client})
