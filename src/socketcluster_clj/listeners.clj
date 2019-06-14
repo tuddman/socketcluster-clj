@@ -1,8 +1,5 @@
 (ns socketcluster-clj.listeners
-  (:import [io.github.sac
-            Ack
-            BasicListener
-            Emitter]))
+  (:import [io.github.sac Ack BasicListener Emitter]))
 
 ;; -- Acks ---------------------
 

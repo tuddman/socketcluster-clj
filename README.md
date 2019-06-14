@@ -25,6 +25,10 @@ or
 
 ;; connect
 => (sc-client/connect my-socket)
+;; automatically re-connect
+=> (sc-client/set-reconnect-strategy my-socket 2000 30)
+
+;; send event(s) to the server
 => (sc-event/emit my-socket {"some" "data"})
 
 ;; CHANNELS -
@@ -39,7 +43,7 @@ or
 => (sc-ch/publish my-socket "channel-name" {"some" "data"})
 ```
 
-for more, have a look in `src/socketcluster_clj/<ns>.clj` for every function you can call.
+for more, have a look in `src/socketcluster_clj/<ns>.clj` to learn what else you can call.
 
 
 ### NPE Issue

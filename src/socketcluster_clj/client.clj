@@ -1,7 +1,5 @@
 (ns socketcluster-clj.client
-  (:import [io.github.sac
-            ReconnectionStrategy
-            Socket]))
+  (:import [io.github.sac ReconnectionStrategy Socket]))
 
 (def local-url "ws://localhost:8000/socketcluster/")
 
